@@ -4,10 +4,11 @@ using UnityEngine;
 public class EnemyScript : MonoBehaviour
 {
     public GameObject target;
-    [SerializeField] float moveSpeed;
-    [SerializeField] float followDistance;
-    [SerializeField] float visionDistance;
-    [SerializeField] int health;
+    [SerializeField] protected float moveSpeed;
+    [SerializeField] protected float followDistance;
+    [SerializeField] protected float visionDistance;
+    [SerializeField] protected int health;
+    [SerializeField] protected int damage;
 
     public static LayerMask playerLayer;
 

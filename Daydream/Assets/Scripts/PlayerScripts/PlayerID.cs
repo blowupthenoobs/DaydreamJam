@@ -7,9 +7,9 @@ using System;
 [CreateAssetMenu]
 public class PlayerID : ScriptableObject
 {
-    public bool selected;
     public Action<float> Attack;
     public Action<float> Dash;
+    public Action Shoot;
 
     public int maxHp;
     public int currentHP;

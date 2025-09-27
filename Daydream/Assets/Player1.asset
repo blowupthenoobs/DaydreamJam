@@ -12,4 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17d5c1911018c6a49900d0638cc4724b, type: 3}
   m_Name: Player1
   m_EditorClassIdentifier: Assembly-CSharp::PlayerID
-  selected: 0
+  maxHp: 30
+  currentHP: 30

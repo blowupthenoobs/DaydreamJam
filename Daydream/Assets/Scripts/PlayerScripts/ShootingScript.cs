@@ -7,12 +7,17 @@ public class ShootingScript : PlayerSystem
     [SerializeField] GameObject orbitHolder;
     [SerializeField] GameObject bloodProjectile;
 
+    void Start()
+    {
+        playerID.Shoot += ShootProjectile;
+    }
+
     void Update()
     {
         FaceMouse();
         
         if(shootAction.WasPressedThisFrame())
-            ShootProjectile();
+            playerID.Shoot.Invoke();
     }
 
     private void ShootProjectile()
