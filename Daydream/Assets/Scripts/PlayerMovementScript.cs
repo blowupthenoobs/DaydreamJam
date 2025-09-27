@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class PlayerMovementScript : PlayerSystem
 {
@@ -32,11 +33,7 @@ public class PlayerMovementScript : PlayerSystem
 
     void FixedUpdate()
     {
-        if(selected)
-        {
-            Move();
-        }
-
+        Move();
     }
 
     void Update()
@@ -47,14 +44,13 @@ public class PlayerMovementScript : PlayerSystem
 #region Controlled Movement
     private void GetInput()
     {
-        moveInput.x = Input.GetAxisRaw("Horizontal");
-        moveInput.y = Input.GetAxisRaw("Vertical");
+        moveInput = movementActions.ReadValue<Vector2>();
 
         moveInput.Normalize();
 
         targetMovement = moveInput * moveSpeed;
 
-        if(Input.GetKeyDown("space"))
+        if(dashAction.WasPressedThisFrame())
             playerID.Dash.Invoke(dashSpeed);
     }
 

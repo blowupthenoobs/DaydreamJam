@@ -476,9 +476,9 @@ MonoBehaviour:
   selected: 0
   playerCollider: {fileID: 1526672686}
   moveSpeed: 7
-  accelleration: 10
-  dashSpeed: 5
-  dashDecelleration: 3
+  accelleration: 25
+  dashSpeed: 12
+  dashDecelleration: 30
   dashing: 0
 --- !u!114 &1526672685
 MonoBehaviour:
@@ -493,6 +493,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Player
   player: {fileID: 11400000, guid: 859f0884c42813f48834485de5615a01, type: 2}
+  inputSystem: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
 --- !u!58 &1526672686
 CircleCollider2D:
   m_ObjectHideFlags: 0
