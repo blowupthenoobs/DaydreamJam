@@ -32,7 +32,7 @@ public class Loot : MonoBehaviour
         if (dist <= homingRange)
         {
             Vector2 dir = (playerPos - orbPos).normalized;
-            
+
             float speed = (homingRange) / dist; // Interpolate speed based on distance            
 
             rb.linearVelocity = dir * speed;
@@ -41,5 +41,13 @@ public class Loot : MonoBehaviour
         {
             rb.linearVelocity = Vector2.zero;
         }
+    }
+    
+    protected virtual void OnTriggerEnter2D(Collider2D collider)
+    {
+        if(collider.tag == "Player")
+            collider.SendMessage("Heal", value);
+
+        Destroy(gameObject);
     }
 }
