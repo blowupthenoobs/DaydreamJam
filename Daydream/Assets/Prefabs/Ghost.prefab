@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 4390830736947084463}
   - component: {fileID: 3918258002640063032}
   - component: {fileID: 628547835129002970}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Ghost
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -141,11 +141,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9cd5de747ca97ba4db1423651c96d835, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GhostScript
-  target: {fileID: 0}
   moveSpeed: 3
+  attackRange: 0
   followDistance: 0
   visionDistance: 0
   health: 1
+  damage: 0
+  cooldown: 0
   maxWanderCooldown: 0
   wanderIntervalAmount: 0
   maxWanderDist: 0

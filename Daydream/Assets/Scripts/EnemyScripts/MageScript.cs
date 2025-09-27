@@ -8,6 +8,9 @@ public class MageScript : EnemyScript
     private bool isStrafing;
     private Vector2 strafePos;
     [SerializeField] float strafeDist;
+
+
+    [SerializeField] float bulletSpawnDist;
     void Update()
     {
         Move();
@@ -37,7 +40,7 @@ public class MageScript : EnemyScript
             {
                 transform.position = Vector2.MoveTowards(transform.position, target.transform.position, moveSpeed*Time.deltaTime);
             }
-            if(Vector2.Distance(transform.position, target.transform.position) < attackRange && Vector2.Distance(transform.position, target.transform.position) >= cowerDistance)
+            if(Vector2.Distance(transform.position, target.transform.position) < attackRange)
             {
                 Attack();
             }
@@ -52,7 +55,7 @@ public class MageScript : EnemyScript
         if (currentCooldown >= cooldown)
         {
             Debug.Log("calling");
-            ShootProjectile(MagicBullet);
+            ShootProjectile(MagicBullet, bulletSpawnDist);
             currentCooldown = 0;
 
             Strafe();

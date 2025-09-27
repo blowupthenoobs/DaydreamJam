@@ -1,16 +1,28 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class EnemyProjectileScript : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    [SerializeField] float moveSpeed;
+    private int damage;
+
+    public void SetUpBullet(int setDamage)
     {
-        
+        damage = setDamage;
     }
 
-    // Update is called once per frame
     void Update()
     {
-        
+        transform.position = transform.position + (transform.up * moveSpeed * Time.deltaTime);
+    }
+
+    void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "Player")
+        {
+            collision.gameObject.SendMessage("Hurt", damage);
+        }
+
+        Destroy(gameObject);
     }
 }

@@ -119,10 +119,12 @@ public class EnemyScript : MonoBehaviour
             collider.SendMessage("Touching", gameObject, SendMessageOptions.DontRequireReceiver);
     }
 
-    public void ShootProjectile(GameObject projectile)
+    public void ShootProjectile(GameObject projectile, float bulletSpawnDist)
     {
         var Direction = (target.transform.position - transform.position).normalized;
 
-        GameObject bullet = Instantiate(projectile, transform.position + (Direction * .5f), transform.rotation);
+        GameObject bullet = Instantiate(projectile, transform.position + (Direction * bulletSpawnDist), transform.rotation);
+        bullet.transform.up = Direction;
+        bullet.SendMessage("SetUpBullet", damage);
     }
 }
