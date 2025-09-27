@@ -3,15 +3,22 @@ using UnityEngine;
 
 public class EnemyScript : MonoBehaviour
 {
-    public GameObject target;
+    public static GameObject target;
+
+
     [SerializeField] protected float moveSpeed;
+
+    public float attackRange;
     [SerializeField] protected float followDistance;
     [SerializeField] protected float visionDistance;
     [SerializeField] protected int health;
     [SerializeField] protected int damage;
 
+    public static LayerMask wallLayer;
     public static LayerMask playerLayer;
 
+    public float cooldown;
+    protected float currentCooldown;
 
     //Wandering variables
     public float maxWanderCooldown;
@@ -19,6 +26,7 @@ public class EnemyScript : MonoBehaviour
     private float currentWanderCooldown;
     public float maxWanderDist;
     private List<Vector2> wanderPoints = new();
+
 
     public void MoveToPlayer()
     {
@@ -31,13 +39,11 @@ public class EnemyScript : MonoBehaviour
 
         var targetNearby = Physics2D.OverlapCircle(transform.position, visionDistance, playerLayer);
 
-        if(targetNearby != null)
+        if (targetNearby != null)
         {
             var Direction = (target.transform.position - transform.position).normalized;
 
-            int layerMask = 1 << 7;
-
-            RaycastHit2D hit = Physics2D.Raycast(transform.position, Direction, visionDistance, layerMask);
+            RaycastHit2D hit = Physics2D.Raycast(transform.position, Direction, visionDistance, wallLayer);
             Debug.DrawRay(transform.position, Direction * visionDistance, Color.red);
 
             targetInSight = (hit.collider == null);
@@ -75,7 +81,7 @@ public class EnemyScript : MonoBehaviour
             currentWanderCooldown += Time.deltaTime;
         }
     }
-    
+
     protected Vector2 GetRandomPositionWithinRadius(Vector2 center, float radius)
     {
         // Generate a random angle between 0 and 360 degrees
@@ -98,7 +104,7 @@ public class EnemyScript : MonoBehaviour
     {
         health--;
 
-        if(health <= 0)
+        if (health <= 0)
             Die();
     }
 
@@ -106,10 +112,17 @@ public class EnemyScript : MonoBehaviour
     {
         Destroy(gameObject);
     }
-    
+
     protected virtual void OnTriggerEnter2D(Collider2D collider)
     {
-        if(collider.tag == "playerProjectile")
+        if (collider.tag == "playerProjectile")
             collider.SendMessage("Touching", gameObject, SendMessageOptions.DontRequireReceiver);
+    }
+
+    public void ShootProjectile(GameObject projectile)
+    {
+        var Direction = (target.transform.position - transform.position).normalized;
+
+        GameObject bullet = Instantiate(projectile, transform.position + (Direction * .5f), transform.rotation);
     }
 }
