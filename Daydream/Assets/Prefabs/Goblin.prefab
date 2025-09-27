@@ -169,3 +169,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b458d0558a9eff74e9eaf30c79b65476, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GoblinScript
+  moveSpeed: 5
+  attackRange: 0
+  followDistance: 15
+  visionDistance: 15
+  health: 5
+  damage: 7
+  cooldown: 0
+  maxWanderCooldown: 0
+  wanderIntervalAmount: 0
+  maxWanderDist: 0
