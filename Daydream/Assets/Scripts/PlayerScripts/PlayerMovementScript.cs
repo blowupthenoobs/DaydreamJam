@@ -9,10 +9,7 @@ public class PlayerMovementScript : PlayerSystem
 
     private Vector2 targetMovement;
     private Vector2 currentMovement;
-
     public Collider2D playerCollider;
-
-    [Header("Controlled Movement Variables")]
     public float moveSpeed;
     public float accelleration;
 

@@ -1,16 +1,39 @@
+using System;
 using UnityEngine;
 
 public class CameraScript : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
+    [SerializeField] GameObject followTarget;
+    [SerializeField] float followDistance;
 
-    // Update is called once per frame
+    private float targetMovementSpeed;
+    private float currentMovementSpeed;
+
+    public float moveSpeed;
+    public float accelleration;
     void Update()
     {
+        DetectRelativePlayerDistance();
+        Move();
+    }
+
+    private void Move()
+    {
+        currentMovementSpeed = Mathf.MoveTowards(currentMovementSpeed, targetMovementSpeed, accelleration * Time.deltaTime);
+
+        Vector3 targetPos = followTarget.transform.position;
+        targetPos.z = transform.position.z;
         
+        transform.position = Vector3.MoveTowards(transform.position, targetPos, currentMovementSpeed * Time.deltaTime);
+    }
+
+    private void DetectRelativePlayerDistance()
+    {
+        Vector3 totalDistance = followTarget.transform.position - transform.position;
+
+        if(totalDistance.magnitude > followDistance)
+            targetMovementSpeed = moveSpeed;
+        else
+            targetMovementSpeed = 0;
     }
 }
