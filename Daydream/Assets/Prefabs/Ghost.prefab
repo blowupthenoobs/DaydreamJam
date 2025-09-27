@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &7858567591057695613
+--- !u!1 &5692264149414489405
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,40 +8,39 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 5392369323327409015}
-  - component: {fileID: 5391845286469501780}
-  - component: {fileID: 7312658228089321111}
-  - component: {fileID: -4029783910145167583}
-  - component: {fileID: -7514423565889031084}
+  - component: {fileID: 7320756038687786914}
+  - component: {fileID: 4390830736947084463}
+  - component: {fileID: 3918258002640063032}
+  - component: {fileID: 628547835129002970}
   m_Layer: 0
-  m_Name: BloodShot
-  m_TagString: playerProjectile
+  m_Name: Ghost
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &5392369323327409015
+--- !u!4 &7320756038687786914
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7858567591057695613}
+  m_GameObject: {fileID: 5692264149414489405}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1, y: 0, z: 0}
-  m_LocalScale: {x: 0.3, y: 0.3, z: 0.3}
-  m_ConstrainProportionsScale: 1
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!212 &5391845286469501780
+--- !u!212 &4390830736947084463
 SpriteRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7858567591057695613}
+  m_GameObject: {fileID: 5692264149414489405}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
@@ -82,8 +81,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
-  m_Color: {r: 0.59119487, g: 0.06878672, b: 0.06878672, a: 1}
+  m_Sprite: {fileID: 21300000, guid: a8a87f3945e467e4f840fbcab6bb4037, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -93,13 +92,13 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!58 &7312658228089321111
-CircleCollider2D:
+--- !u!70 &3918258002640063032
+CapsuleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7858567591057695613}
+  m_GameObject: {fileID: 5692264149414489405}
   m_Enabled: 1
   serializedVersion: 3
   m_Density: 1
@@ -123,49 +122,30 @@ CircleCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
-  m_Radius: 0.49999997
---- !u!50 &-4029783910145167583
-Rigidbody2D:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7858567591057695613}
-  m_BodyType: 0
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDamping: 0
-  m_AngularDamping: 0.05
-  m_GravityScale: 0
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 7
---- !u!114 &-7514423565889031084
+  m_Offset: {x: 0.40549314, y: -0.07764745}
+  m_Size: {x: 0.84233356, y: 1.5325322}
+  m_Direction: 0
+--- !u!114 &628547835129002970
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7858567591057695613}
+  m_GameObject: {fileID: 5692264149414489405}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a02142312f8e9f24fa3ee06ff94e75bc, type: 3}
+  m_Script: {fileID: 11500000, guid: 9cd5de747ca97ba4db1423651c96d835, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PlayerBulletScript
-  moveSpeed: 10
+  m_EditorClassIdentifier: Assembly-CSharp::GhostScript
+  target: {fileID: 0}
+  moveSpeed: 3
+  followDistance: 0
+  visionDistance: 0
+  health: 1
+  maxWanderCooldown: 0
+  wanderIntervalAmount: 0
+  maxWanderDist: 0

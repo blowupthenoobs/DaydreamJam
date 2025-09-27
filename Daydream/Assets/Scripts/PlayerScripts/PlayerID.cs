@@ -10,4 +10,7 @@ public class PlayerID : ScriptableObject
     public bool selected;
     public Action<float> Attack;
     public Action<float> Dash;
+
+    public int maxHp;
+    public int currentHP;
 }

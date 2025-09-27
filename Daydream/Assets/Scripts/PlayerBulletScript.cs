@@ -16,13 +16,23 @@ public class PlayerBulletScript : MonoBehaviour
         transform.position = transform.position + (transform.up * moveSpeed * Time.deltaTime);
     }
 
-    void OnCollisionEnter2D(Collision2D other)
+    void OnCollisionEnter2D(Collision2D collision)
     {
-        if (other.gameObject.tag == "Enemy")
+        if (collision.gameObject.tag == "Enemy")
         {
-            other.gameObject.SendMessage("Hurt");
+            collision.gameObject.SendMessage("Hurt");
         }
 
         Destroy(gameObject);
+    }
+
+    public void Touching(GameObject collision)
+    {
+        if(collision.tag == "Enemy")
+        {
+            collision.gameObject.SendMessage("Hurt");
+            Destroy(gameObject);
+        }
+
     }
 }
