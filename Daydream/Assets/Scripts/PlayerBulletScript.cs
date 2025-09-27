@@ -18,8 +18,6 @@ public class PlayerBulletScript : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D other)
     {
-        Debug.Log("hit something");
-        
         if (other.gameObject.tag == "Enemy")
         {
             other.gameObject.SendMessage("Hurt");
