@@ -9,7 +9,9 @@ public class PlayerSystem : MonoBehaviour
     protected InputActionAsset inputSystem;
 
     protected InputAction movementActions;
+    protected InputAction shootAction;
     protected InputAction dashAction;
+    protected InputAction mousePosition;
 
     protected virtual void Awake()
     {
@@ -18,7 +20,10 @@ public class PlayerSystem : MonoBehaviour
         playerID = player.player;
 
         movementActions = InputSystem.actions.FindAction("Move");
+        shootAction = InputSystem.actions.FindAction("Attack");
         dashAction = InputSystem.actions.FindAction("Dash");
+
+        mousePosition = InputSystem.actions.FindAction("Point");
     }
 
     protected void OnEnable()
