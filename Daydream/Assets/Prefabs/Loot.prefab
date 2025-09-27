@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 8794034430250882568}
   - component: {fileID: 5044861693868881831}
   - component: {fileID: 8926035436853687381}
+  - component: {fileID: 4305181292487906008}
   - component: {fileID: -4568380286896457579}
   m_Layer: 0
   m_Name: Loot
@@ -106,7 +107,45 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Loot
   value: 1
   scale: 0
-  homingRange: 5
+  homingRange: 3
+  decellerationSpeed: 0
+  maxSpurtDist: 0
+--- !u!58 &4305181292487906008
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5027921459788741206}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 16
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 0, y: 0}
+  m_Radius: 0.5
 --- !u!50 &-4568380286896457579
 Rigidbody2D:
   serializedVersion: 5

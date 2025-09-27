@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 7312658228089321111}
   - component: {fileID: -4029783910145167583}
   - component: {fileID: -7514423565889031084}
-  m_Layer: 0
+  m_Layer: 4
   m_Name: BloodShot
   m_TagString: playerProjectile
   m_Icon: {fileID: 0}

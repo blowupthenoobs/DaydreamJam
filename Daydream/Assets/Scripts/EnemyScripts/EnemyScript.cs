@@ -16,6 +16,9 @@ public class EnemyScript : MonoBehaviour
 
     public static LayerMask wallLayer;
     public static LayerMask playerLayer;
+    public static GameObject bloodDrop;
+    public int minBloodDrop;
+    public int maxBloodDrop;
 
     public float cooldown;
     protected float currentCooldown;
@@ -110,6 +113,12 @@ public class EnemyScript : MonoBehaviour
 
     public void Die()
     {
+        int bloodToDrop = Random.Range(minBloodDrop, maxBloodDrop);
+        for(int i = 0; i < bloodToDrop; i++)
+        {
+            Instantiate(bloodDrop, transform.position, transform.rotation);
+        }
+        
         Destroy(gameObject);
     }
 

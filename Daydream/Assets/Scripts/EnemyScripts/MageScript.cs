@@ -54,7 +54,6 @@ public class MageScript : EnemyScript
     {
         if (currentCooldown >= cooldown)
         {
-            Debug.Log("calling");
             ShootProjectile(MagicBullet, bulletSpawnDist);
             currentCooldown = 0;
 

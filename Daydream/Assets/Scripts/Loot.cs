@@ -10,15 +10,20 @@ public class Loot : MonoBehaviour
     public float scale; // Scale of the loot orb, used for visual size
 
     [Header("Homing Settings")]
-    public float homingRange = 5f;           // range within which the orb will start homing towards the player
+    public float homingRange; // range within which the orb will start homing towards the player
 
     private Transform player;
     private Rigidbody2D rb;
 
+    [SerializeField] float decellerationSpeed;
+    [SerializeField] float maxSpurtDist;
+
     void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
-        player = GameObject.FindGameObjectWithTag("Player").transform;
+        player = EnemyScript.target.transform;
+
+        SpurtFromEnemy();
     }
 
     void FixedUpdate()
@@ -35,11 +40,11 @@ public class Loot : MonoBehaviour
 
             float speed = (homingRange) / dist; // Interpolate speed based on distance            
 
-            rb.linearVelocity = dir * speed;
+            rb.linearVelocity = Vector2.MoveTowards(rb.linearVelocity, dir * speed, decellerationSpeed);
         }
         else
         {
-            rb.linearVelocity = Vector2.zero;
+            rb.linearVelocity = Vector2.MoveTowards(rb.linearVelocity, new Vector2(), decellerationSpeed);
         }
     }
     
@@ -49,5 +54,17 @@ public class Loot : MonoBehaviour
             collider.SendMessage("Heal", value);
 
         Destroy(gameObject);
+    }
+    
+    protected void SpurtFromEnemy()
+    {
+        float angle = Random.Range(0f, 360f) * Mathf.Deg2Rad;
+
+        float speed = Random.Range(0.2f, maxSpurtDist);
+
+        float x = Mathf.Cos(angle) * speed;
+        float y = Mathf.Sin(angle) * speed;
+
+        rb.linearVelocity = new Vector2(x, y);
     }
 }

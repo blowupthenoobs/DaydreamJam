@@ -16,9 +16,9 @@ public class PlayerHealthScript : PlayerSystem
         playerID.currentHP -= damage;
         UpdateHealthBar();
     }
-    public void Heal(int damage = 1)
+    public void Heal(int hp = 1)
     {
-        playerID.currentHP += damage;
+        playerID.currentHP += hp;
         UpdateHealthBar();
     }
 
