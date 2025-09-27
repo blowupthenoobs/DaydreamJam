@@ -106,7 +106,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Loot
   value: 1
   scale: 0
-  homingRange: 3
+  homingRange: 5
 --- !u!50 &-4568380286896457579
 Rigidbody2D:
   serializedVersion: 5
