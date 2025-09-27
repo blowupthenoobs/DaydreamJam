@@ -13,9 +13,9 @@ GameObject:
   - component: {fileID: 4657493047173414697}
   - component: {fileID: 7703604573427673760}
   - component: {fileID: 4664141650583537794}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Goblin
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -116,7 +116,7 @@ CapsuleCollider2D:
     m_Bits: 4294967295
   m_ForceReceiveLayers:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 0
   m_ContactCaptureLayers:
     serializedVersion: 2
     m_Bits: 4294967295
@@ -127,8 +127,8 @@ CapsuleCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: -0.011555195, y: -0.034665942}
-  m_Size: {x: 0.32055235, y: 0.53316903}
+  m_Offset: {x: -0.01740849, y: 0.0033797622}
+  m_Size: {x: 0.38786387, y: 0.5478021}
   m_Direction: 0
 --- !u!50 &7703604573427673760
 Rigidbody2D:
@@ -170,12 +170,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GoblinScript
   moveSpeed: 5
-  attackRange: 0
-  followDistance: 15
+  attackRange: 8
+  followDistance: 3
   visionDistance: 15
   health: 5
   damage: 7
-  cooldown: 0
-  maxWanderCooldown: 0
-  wanderIntervalAmount: 0
-  maxWanderDist: 0
+  cooldown: 0.5
+  maxWanderCooldown: 8
+  wanderIntervalAmount: 2
+  maxWanderDist: 5
+  chargeSpeed: 12
+  decellerationSpeed: 5
