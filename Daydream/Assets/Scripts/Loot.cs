@@ -17,6 +17,7 @@ public class Loot : MonoBehaviour
 
     [SerializeField] float decellerationSpeed;
     [SerializeField] float maxSpurtDist;
+    [SerializeField] float secretPickUpDistance;
 
     void Awake()
     {
@@ -40,22 +41,28 @@ public class Loot : MonoBehaviour
 
             float speed = (homingRange) / dist; // Interpolate speed based on distance            
 
-            rb.linearVelocity = Vector2.MoveTowards(rb.linearVelocity, dir * speed, decellerationSpeed);
+            rb.linearVelocity = Vector2.MoveTowards(rb.linearVelocity, dir * speed, decellerationSpeed * Time.fixedDeltaTime);
+
+            var targetNearby = Physics2D.OverlapCircle(transform.position, secretPickUpDistance, GameManagerScript.Instance.playerLayer);
+
+            if(targetNearby != null)
+                PickUpHealth(targetNearby.gameObject);
         }
         else
         {
-            rb.linearVelocity = Vector2.MoveTowards(rb.linearVelocity, new Vector2(), decellerationSpeed);
+            rb.linearVelocity = Vector2.MoveTowards(rb.linearVelocity, new Vector2(), decellerationSpeed * Time.fixedDeltaTime);
         }
     }
-    
+
     protected virtual void OnTriggerEnter2D(Collider2D collider)
     {
         if(collider.tag == "Player")
-            collider.SendMessage("Heal", value);
+        {
+            PickUpHealth(collider.gameObject);
+        }
 
-        Destroy(gameObject);
     }
-    
+
     protected void SpurtFromEnemy()
     {
         float angle = Random.Range(0f, 360f) * Mathf.Deg2Rad;
@@ -66,5 +73,11 @@ public class Loot : MonoBehaviour
         float y = Mathf.Sin(angle) * speed;
 
         rb.linearVelocity = new Vector2(x, y);
+    }
+
+    private void PickUpHealth(GameObject target)
+    {
+        target.SendMessage("Heal", value);
+        Destroy(gameObject);
     }
 }

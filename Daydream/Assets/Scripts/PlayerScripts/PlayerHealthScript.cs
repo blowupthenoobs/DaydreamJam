@@ -15,6 +15,9 @@ public class PlayerHealthScript : PlayerSystem
     {
         playerID.currentHP -= damage;
         UpdateHealthBar();
+
+        if(playerID.currentHP <= 0)
+            GameManagerScript.Instance.PlayerDeath();
     }
     public void Heal(int hp = 1)
     {

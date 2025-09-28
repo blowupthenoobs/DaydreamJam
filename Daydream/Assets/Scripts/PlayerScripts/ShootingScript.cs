@@ -22,7 +22,7 @@ public class ShootingScript : PlayerSystem
 
     private void ShootProjectile()
     {
-        GameObject bullet = Instantiate(bloodProjectile, shootPos.transform.position, shootPos.transform.rotation);
+        Instantiate(bloodProjectile, shootPos.transform.position, shootPos.transform.rotation);
     }
     
     private void FaceMouse()

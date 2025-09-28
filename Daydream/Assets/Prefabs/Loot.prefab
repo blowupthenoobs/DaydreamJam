@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 8926035436853687381}
   - component: {fileID: 4305181292487906008}
   - component: {fileID: -4568380286896457579}
-  m_Layer: 0
+  m_Layer: 4
   m_Name: Loot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -83,7 +83,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
-  m_Color: {r: 1, g: 0, b: 0, a: 1}
+  m_Color: {r: 0.6156863, g: 0.054901965, b: 0.054901965, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -108,8 +108,9 @@ MonoBehaviour:
   value: 1
   scale: 0
   homingRange: 3
-  decellerationSpeed: 0
-  maxSpurtDist: 0
+  decellerationSpeed: 10
+  maxSpurtDist: 10
+  secretPickUpDistance: 0.2
 --- !u!58 &4305181292487906008
 CircleCollider2D:
   m_ObjectHideFlags: 0

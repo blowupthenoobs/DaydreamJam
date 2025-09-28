@@ -61,6 +61,8 @@ public class PlayerMovementScript : PlayerSystem
         {
             currentMovement = Vector2.MoveTowards(currentMovement, targetMovement * 0, dashDecelleration * Time.fixedDeltaTime);
 
+            if(currentMovement.magnitude <=2)
+                currentMovement = new Vector2();
             if(currentMovement.x == 0 && currentMovement.y == 0)
                 dashing = false;
         }

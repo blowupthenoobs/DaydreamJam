@@ -13,6 +13,7 @@ public class EnemyScript : MonoBehaviour
     [SerializeField] protected float visionDistance;
     [SerializeField] protected int health;
     [SerializeField] protected int damage;
+    [SerializeField] protected int score;
 
     public static LayerMask wallLayer;
     public static LayerMask playerLayer;
@@ -103,9 +104,9 @@ public class EnemyScript : MonoBehaviour
         return randomPosition;
     }
 
-    public void Hurt()
+    public void Hurt(int damage = 1)
     {
-        health--;
+        health -= damage;
 
         if (health <= 0)
             Die();
@@ -118,7 +119,8 @@ public class EnemyScript : MonoBehaviour
         {
             Instantiate(bloodDrop, transform.position, transform.rotation);
         }
-        
+
+        GameManagerScript.Instance.UpdateScore(score);
         Destroy(gameObject);
     }
 

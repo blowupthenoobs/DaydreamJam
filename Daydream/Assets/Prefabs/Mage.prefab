@@ -175,8 +175,9 @@ MonoBehaviour:
   visionDistance: 15
   health: 3
   damage: 2
+  score: 2
   minBloodDrop: -1
-  maxBloodDrop: 5
+  maxBloodDrop: 7
   cooldown: 0.5
   maxWanderCooldown: 10
   wanderIntervalAmount: 3

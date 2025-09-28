@@ -20,7 +20,7 @@ public class PlayerBulletScript : MonoBehaviour
     {
         if (collision.gameObject.tag == "Enemy")
         {
-            collision.gameObject.SendMessage("Hurt");
+            collision.gameObject.SendMessage("Hurt", 1);
         }
 
         Destroy(gameObject);
@@ -30,7 +30,7 @@ public class PlayerBulletScript : MonoBehaviour
     {
         if(collision.tag == "Enemy")
         {
-            collision.gameObject.SendMessage("Hurt");
+            collision.gameObject.SendMessage("Hurt", 1);
             Destroy(gameObject);
         }
 

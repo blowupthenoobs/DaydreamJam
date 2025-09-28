@@ -33,7 +33,7 @@ public class PlayerSystem : MonoBehaviour
         inputSystem.FindActionMap("Player").Enable();
     }
 
-    protected void OnDisable()
+    protected void DisableInputSystem()
     {
         inputSystem.FindActionMap("Player").Disable();
     }

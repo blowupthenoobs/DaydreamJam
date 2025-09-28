@@ -18,10 +18,7 @@ public class EnemyProjectileScript : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.tag == "Player")
-        {
-            collision.gameObject.SendMessage("Hurt", damage);
-        }
+        collision.gameObject.SendMessage("Hurt", damage, SendMessageOptions.DontRequireReceiver);
 
         Destroy(gameObject);
     }

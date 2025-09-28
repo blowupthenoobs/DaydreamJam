@@ -13,7 +13,10 @@ public class GhostScript : EnemyScript
         if(collider.tag == "playerProjectile")
             collider.SendMessage("Touching", gameObject, SendMessageOptions.DontRequireReceiver);
         else if(collider.tag == "Player")
+        {
+            GameManagerScript.Instance.UpdateScore(-2);
             collider.SendMessage("Hurt", damage);
+        }
 
         Die();
     }

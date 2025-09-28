@@ -1,4 +1,3 @@
-using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
 public class GoblinScript : EnemyScript
@@ -59,8 +58,7 @@ public class GoblinScript : EnemyScript
     
     void OnCollisionEnter2D(Collision2D collision)
     {
-        if(collision.gameObject.tag == "Player")
-            collision.gameObject.SendMessage("Hurt", damage);
+        collision.gameObject.SendMessage("Hurt", damage, SendMessageOptions.DontRequireReceiver);
         charging = false;
     }
 }

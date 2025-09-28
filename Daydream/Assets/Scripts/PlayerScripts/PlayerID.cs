@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 using System;
+using UnityEngine.InputSystem;
 
 [CreateAssetMenu]
 public class PlayerID : ScriptableObject
