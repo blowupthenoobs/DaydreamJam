@@ -3,14 +3,38 @@ using UnityEngine;
 
 public class CameraScript : MonoBehaviour
 {
-    public Transform player; // Reference to the player's transform
-    public float smoothSpeed; // Speed of the camera smoothing
+    [SerializeField] GameObject followTarget;
+    [SerializeField] float followDistance;
+
+    private float targetMovementSpeed;
+    private float currentMovementSpeed;
+
+    public float moveSpeed;
+    public float accelleration;
     void Update()
     {
-        //linear interpolate towards player
-        Vector3 desiredPosition = new Vector3(player.position.x, player.position.y, transform.position.z);
-        Vector3 smoothedPosition = Vector3.Lerp(transform.position, desiredPosition, smoothSpeed * Time.deltaTime);
-        transform.position = smoothedPosition; 
+        DetectRelativePlayerDistance();
+        Move();
+    }
 
+    private void Move()
+
+    {
+        currentMovementSpeed = Mathf.MoveTowards(currentMovementSpeed, targetMovementSpeed, accelleration * Time.deltaTime);
+
+        Vector3 targetPos = followTarget.transform.position;
+        targetPos.z = transform.position.z;
+        
+        transform.position = Vector3.MoveTowards(transform.position, targetPos, currentMovementSpeed * Time.deltaTime);
+    }
+
+    private void DetectRelativePlayerDistance()
+    {
+        Vector3 totalDistance = followTarget.transform.position - transform.position;
+
+        if(totalDistance.magnitude > followDistance)
+            targetMovementSpeed = moveSpeed;
+        else
+            targetMovementSpeed = 0;
     }
 }
